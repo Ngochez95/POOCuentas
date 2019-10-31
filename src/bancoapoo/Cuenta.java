@@ -73,11 +73,24 @@ public class Cuenta {
         return false;
     }
 
-    public void ingresoEfectivo(String user, String contra, double efectivo) {
+    public void ingresoEfectivo(String user, String contra, String efectivo) {
         for (int fila = 0; fila < 25; fila++) {
             if (Cuentas[fila][0].equals(user) && Cuentas[fila][1].equals(contra)) {
-            Cuentas[fila][2]=String.valueOf(Double.parseDouble(Cuentas[fila][2])+efectivo);
-            Cuentas[fila][3]="Ingresó la suma de: $"+efectivo;
+                Cuentas[fila][2] = String.valueOf(Double.parseDouble(Cuentas[fila][2]) + Double.parseDouble(efectivo));
+                Cuentas[fila][3] = "Ingresó la suma de: $" + efectivo;
+            }
+        }
+    }
+
+    public void retiroEfectivo(String user, String contra, String efectivo) {
+        for (int fila = 0; fila < 25; fila++) {
+            if (Cuentas[fila][0].equals(user) && Cuentas[fila][1].equals(contra)) {
+                if (Double.parseDouble(Cuentas[fila][2]) < Double.parseDouble(efectivo)) {
+                    JOptionPane.showMessageDialog(null, "no dispone de la cantidad necesario para realizar la transacción");
+                } else {
+                    Cuentas[fila][2] = String.valueOf(Double.parseDouble(Cuentas[fila][2]) - Double.parseDouble(efectivo));
+                    Cuentas[fila][3] = "Retiró la suma de: $" + efectivo;
+                }
             }
         }
     }

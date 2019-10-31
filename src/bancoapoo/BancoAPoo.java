@@ -6,6 +6,7 @@ import javax.swing.JTextArea;
 public class BancoAPoo {
 
     public static void main(String[] args) {
+        String nombre, efectivo, contrasenia;
         JTextArea hoja = new JTextArea();
         Cuenta cuentas = new Cuenta();
         int opciones;
@@ -14,10 +15,15 @@ public class BancoAPoo {
         do {
             opciones = Integer.parseInt(JOptionPane.showInputDialog("Opciones"
                     + "\n1-Crear cuenta\n2-Ver Cuentas"
-                    + "\n3-Consultar saldo\n4-Ingresar efectivo"));
+                    + "\n3-Consultar saldo\n4-Ingresar efectivo\n5-Retiro efectivo"));
             switch (opciones) {
                 case 1:
-                    cuentas.CrearCuenta("nelson", "25", "12345");
+                    nombre = JOptionPane.showInputDialog("ingrese nombre");
+                    efectivo = JOptionPane.showInputDialog("ingrese efectivo");
+                    contrasenia = JOptionPane.showInputDialog("ingrese contrasenia");
+
+                    cuentas.CrearCuenta(nombre, efectivo, contrasenia);
+                    JOptionPane.showMessageDialog(null, "Éxito!");
                     break;
 
                 case 2:
@@ -25,10 +31,13 @@ public class BancoAPoo {
                     JOptionPane.showMessageDialog(null, hoja);
                     break;
                 case 3:
-                   JOptionPane.showMessageDialog(null, cuentas.mostrarSaldo("nelson", "12345"));
+                   
                     break;
                 case 4:
-                    cuentas.ingresoEfectivo("nelson", "12345", 200);
+                   
+                    break;
+                case 5:
+                  
                     break;
             }
             cuentas.setSalida("");
