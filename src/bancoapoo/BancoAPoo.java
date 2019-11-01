@@ -31,13 +31,36 @@ public class BancoAPoo {
                     JOptionPane.showMessageDialog(null, hoja);
                     break;
                 case 3:
-                   
+                    nombre = JOptionPane.showInputDialog("ingrese nombre");
+                    contrasenia = JOptionPane.showInputDialog("ingrese contrasenia");
+                    if (cuentas.verificarUsuario(nombre, contrasenia)) {
+                        JOptionPane.showMessageDialog(null, cuentas.mostrarSaldo(nombre, contrasenia));
+
+                    } else {
+
+                        JOptionPane.showMessageDialog(null, "error, credenciales incorrectas");
+                    }
                     break;
                 case 4:
-                   
+                    nombre = JOptionPane.showInputDialog("ingrese nombre");
+                    contrasenia = JOptionPane.showInputDialog("ingrese contrasenia");
+                    if (cuentas.verificarUsuario(nombre, contrasenia)) {
+                        efectivo = JOptionPane.showInputDialog("ingrese efectivo");
+                        cuentas.ingresoEfectivo(nombre, contrasenia, efectivo);
+                    } else {
+                        JOptionPane.showMessageDialog(null, "error, credenciales incorrectas");
+
+                    }
                     break;
                 case 5:
-                  
+                    nombre = JOptionPane.showInputDialog("ingrese nombre");
+                    contrasenia = JOptionPane.showInputDialog("ingrese contrasenia");
+                    if (cuentas.verificarUsuario(nombre, contrasenia)) {
+                        efectivo = JOptionPane.showInputDialog("ingrese efectivo que desea retirar");
+                        cuentas.retiroEfectivo(nombre, contrasenia, efectivo);
+                    } else {
+                        JOptionPane.showMessageDialog(null, "error, credenciales incorrectas");
+                    }
                     break;
             }
             cuentas.setSalida("");
